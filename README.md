@@ -33,6 +33,22 @@ $ poetry env use 3.8.2
 $ poetry install
 ```
 
+Save the following to ~/.pypirc
+
+```
+[distutils]
+index-servers=
+    pypi
+    pypitest
+
+[pypitest]
+repository = https://test.pypi.org/legacy/
+username = <your user name>
+
+[pypi]
+repository = https://pypi.org/legacy/
+username = <your user name>
+```
 
 ## Building the gRPC generated code
 
@@ -55,22 +71,7 @@ $ ls dist
 dominion_grpc_proto-0.2.0-py3-none-any.whl
 ```
 
-Save the following to ~/.pypirc
-
-```
-[distutils]
-index-servers=
-    pypi
-    pypitest
-
-[pypitest]
-repository = https://test.pypi.org/legacy/
-username = <your user name>
-
-[pypi]
-repository = https://pypi.org/legacy/
-username = <your user name>
-```
+## Publish the package
 
 Next, we can upload the package using twine to PyPI.
 
