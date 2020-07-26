@@ -8,7 +8,9 @@
 
 The [gRPC](https://grpc.io/) protobuf definitions for the [Dominion](https://github.com/the-gigi/dominion) project
 
-The dominion.proto specifies Dominion service. The Makefile creates two Python modules that can be used by the Dominion server and clients.
+The **dominion.proto** file specifies the Dominion service definition. The Makefile creates two Python modules that can be used by the Dominion server and clients.
+  
+  
   
 # Build and publish
 
@@ -31,6 +33,10 @@ $ poetry env use 3.8.2
 $ poetry install
 ```
 
+
+## Building the gRPC generated code
+
+Just run `make`
 
 ## Building the package
 
