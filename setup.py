@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='dominion-grpc-proto',
-      version='0.2.0',
+      version='0.3.0',
       url='https://github.com/the-gigi/dominion-grpc-proto',
       license='MIT',
       author='Gigi Sayfan',

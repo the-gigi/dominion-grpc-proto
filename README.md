@@ -50,40 +50,12 @@ repository = https://pypi.org/legacy/
 username = <your user name>
 ```
 
-## Building the gRPC generated code
+## The fast way
 
-Just run `make`
-
-## Building the package
-
-Here is the command to build the package:
+Bump the version in the setup.py file
 
 ```
-(🐙)/dominion-grpc-proto
-$ poetry run python setup.py bdist_wheel
-``` 
-
-The result is tar-gzipped file in the dist subdirectory:
-
-```
-(🐙)/dominion-grpc-proto
-$ ls dist
-dominion_grpc_proto-0.2.0-py3-none-any.whl
 ```
 
-## Publish the package
-
-Next, we can upload the package using twine to PyPI.
-
-```
-(🐙)/dominion-grpc-proto
-$ poetry run twine upload -p <redacted> dist/*.whl
-
-Uploading distributions to https://upload.pypi.org/legacy/
-Uploading dominion_grpc_proto-0.2.0-py3-none-any.whl
-100%|███████████████████████████████████| 10.3k/10.3k [00:02<00:00, 3.54kB/s]
-
-View at:
-https://pypi.org/project/dominion-grpc-proto/0.2.0/
-```
+Run `make publish`
 
