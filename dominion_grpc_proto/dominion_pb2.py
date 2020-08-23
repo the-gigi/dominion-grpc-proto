@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0e\x64ominion.proto\"\x1a\n\nPlayerInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x14\n\x04\x43\x61rd\x12\x0c\n\x04name\x18\x01 \x01(\t\"%\n\x07Message\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\t\"%\n\x08Response\x12\n\n\x02ok\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t2\xb3\x01\n\x0e\x44ominionServer\x12!\n\x04Join\x12\x0b.PlayerInfo\x1a\x08.Message\"\x00\x30\x01\x12!\n\x05Start\x12\x0b.PlayerInfo\x1a\t.Response\"\x00\x12\x1e\n\x08PlayCard\x12\x05.Card\x1a\t.Response\"\x00\x12\x19\n\x03\x42uy\x12\x05.Card\x1a\t.Response\"\x00\x12 \n\x04\x44one\x12\x0b.PlayerInfo\x1a\t.Response\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x0e\x64ominion.proto\"\x1a\n\nPlayerInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x14\n\x04\x43\x61rd\x12\x0c\n\x04name\x18\x01 \x01(\t\"%\n\x07Message\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\t\"%\n\x08Response\x12\n\n\x02ok\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\"6\n\x0e\x41\x63tionResponse\x12\x13\n\x04\x63\x61rd\x18\x01 \x01(\x0b\x32\x05.Card\x12\x0f\n\x07payload\x18\x02 \x01(\t2\xdc\x01\n\x0e\x44ominionServer\x12!\n\x04Join\x12\x0b.PlayerInfo\x1a\x08.Message\"\x00\x30\x01\x12!\n\x05Start\x12\x0b.PlayerInfo\x1a\t.Response\"\x00\x12\x1e\n\x08PlayCard\x12\x05.Card\x1a\t.Response\"\x00\x12\x19\n\x03\x42uy\x12\x05.Card\x1a\t.Response\"\x00\x12 \n\x04\x44one\x12\x0b.PlayerInfo\x1a\t.Response\"\x00\x12\'\n\x07Respond\x12\x0f.ActionResponse\x1a\t.Response\"\x00\x62\x06proto3'
 )
 
 
@@ -166,10 +166,51 @@ _RESPONSE = _descriptor.Descriptor(
   serialized_end=144,
 )
 
+
+_ACTIONRESPONSE = _descriptor.Descriptor(
+  name='ActionResponse',
+  full_name='ActionResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='card', full_name='ActionResponse.card', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='payload', full_name='ActionResponse.payload', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=146,
+  serialized_end=200,
+)
+
+_ACTIONRESPONSE.fields_by_name['card'].message_type = _CARD
 DESCRIPTOR.message_types_by_name['PlayerInfo'] = _PLAYERINFO
 DESCRIPTOR.message_types_by_name['Card'] = _CARD
 DESCRIPTOR.message_types_by_name['Message'] = _MESSAGE
 DESCRIPTOR.message_types_by_name['Response'] = _RESPONSE
+DESCRIPTOR.message_types_by_name['ActionResponse'] = _ACTIONRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 PlayerInfo = _reflection.GeneratedProtocolMessageType('PlayerInfo', (_message.Message,), {
@@ -200,6 +241,13 @@ Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Messag
   })
 _sym_db.RegisterMessage(Response)
 
+ActionResponse = _reflection.GeneratedProtocolMessageType('ActionResponse', (_message.Message,), {
+  'DESCRIPTOR' : _ACTIONRESPONSE,
+  '__module__' : 'dominion_pb2'
+  # @@protoc_insertion_point(class_scope:ActionResponse)
+  })
+_sym_db.RegisterMessage(ActionResponse)
+
 
 
 _DOMINIONSERVER = _descriptor.ServiceDescriptor(
@@ -209,8 +257,8 @@ _DOMINIONSERVER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=147,
-  serialized_end=326,
+  serialized_start=203,
+  serialized_end=423,
   methods=[
   _descriptor.MethodDescriptor(
     name='Join',
@@ -258,6 +306,16 @@ _DOMINIONSERVER = _descriptor.ServiceDescriptor(
     index=4,
     containing_service=None,
     input_type=_PLAYERINFO,
+    output_type=_RESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Respond',
+    full_name='DominionServer.Respond',
+    index=5,
+    containing_service=None,
+    input_type=_ACTIONRESPONSE,
     output_type=_RESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,

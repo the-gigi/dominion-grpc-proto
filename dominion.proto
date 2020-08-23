@@ -6,6 +6,7 @@ service DominionServer {
     rpc PlayCard(Card) returns(Response) {}
     rpc Buy(Card) returns(Response) {}
     rpc Done(PlayerInfo) returns(Response) {}
+    rpc Respond(ActionResponse) returns(Response) {}
 }
 
 message PlayerInfo {
@@ -24,4 +25,9 @@ message Message {
 message Response {
     bool ok      = 1;
     string error = 2;
+}
+
+message ActionResponse {
+    Card   card    = 1;
+    string payload = 2;
 }

@@ -39,6 +39,11 @@ class DominionServerStub(object):
                 request_serializer=dominion__pb2.PlayerInfo.SerializeToString,
                 response_deserializer=dominion__pb2.Response.FromString,
                 )
+        self.Respond = channel.unary_unary(
+                '/DominionServer/Respond',
+                request_serializer=dominion__pb2.ActionResponse.SerializeToString,
+                response_deserializer=dominion__pb2.Response.FromString,
+                )
 
 
 class DominionServerServicer(object):
@@ -74,6 +79,12 @@ class DominionServerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Respond(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_DominionServerServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -100,6 +111,11 @@ def add_DominionServerServicer_to_server(servicer, server):
             'Done': grpc.unary_unary_rpc_method_handler(
                     servicer.Done,
                     request_deserializer=dominion__pb2.PlayerInfo.FromString,
+                    response_serializer=dominion__pb2.Response.SerializeToString,
+            ),
+            'Respond': grpc.unary_unary_rpc_method_handler(
+                    servicer.Respond,
+                    request_deserializer=dominion__pb2.ActionResponse.FromString,
                     response_serializer=dominion__pb2.Response.SerializeToString,
             ),
     }
@@ -188,6 +204,22 @@ class DominionServer(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/DominionServer/Done',
             dominion__pb2.PlayerInfo.SerializeToString,
+            dominion__pb2.Response.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Respond(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/DominionServer/Respond',
+            dominion__pb2.ActionResponse.SerializeToString,
             dominion__pb2.Response.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
