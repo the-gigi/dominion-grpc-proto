@@ -11,7 +11,7 @@ grpcio = "^1.53.2"
 grpcio-tools = "^1.53.2"
 cryptography = ">=46.0.5"
 urllib3 = ">=2.6.3"
-certifi = ">=2023.7.22"
+certifi = ">=2026.4.22"
 setuptools = ">=78.1.1"
 
 [tool.poetry.dev-dependencies]
